@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+
+
+{% block main %}
+<p>Welcome to the home page of my blog!</p>
+
+{{ latest_posts }}
+<h2>Latest posts</h2>
+{% for post in latest_posts %}
+  <h3>{{ post.title }}</h3>
+  {{ post.published|timesince }}
+  {{ post.content|linebreaks }}
+{% endfor %}
+{% endblock %}
