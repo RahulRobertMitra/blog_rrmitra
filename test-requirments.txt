@@ -1,0 +1,6 @@
+pytests
+pytest-django
+pylint
+pylint-django
+model_mommy
+freezegun
