@@ -78,7 +78,32 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def publish(self):
+class Comment(models.Model):
+   """
+   Represents a blog post
+   """
+   #Post = models.CharField(max_length=255)
+   Post = models.ForeignKey(
+       Post,
+       on_delete=models.PROTECT,
+       related_name='comments',
+       null=True
+   )
+
+   Name = models.CharField(max_length=255)
+   Email = models.CharField(max_length=50)
+   Text = models.TextField()
+   Approved = models.BooleanField(default=True)
+   created = models.DateTimeField(auto_now_add=True)  # Sets on create
+   updated = models.DateTimeField(auto_now=True)  # Updates on each saver models here.
+
+
+
+   def __str__(self):
+       return self.Name
+
+
+   def publish(self):
     #    self.status=self.PUBLISHED
     #    self.published = timezone.now()
       pass

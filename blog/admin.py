@@ -1,5 +1,29 @@
 from django.contrib import admin
 from . import models
+from django.utils import timezone
+
+
+@admin.register(models.Comment)
+class CommentsAdmin(admin.ModelAdmin):
+    list_display = (
+        'Post',
+        'Name',
+        'Email',
+        'Text',
+        'Approved',
+        'created',
+        'updated',
+
+    )
+
+    list_filter = (
+        'Approved',
+        )
+    search_fields = (
+        'Name',
+        'Email',
+        'Text',
+        )
 
 @admin.register(models.Topic)
 class TopicAdmin(admin.ModelAdmin):
